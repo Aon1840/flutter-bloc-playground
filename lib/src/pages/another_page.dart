@@ -73,21 +73,46 @@ class _AnotherPageState extends State<AnotherPage> {
                   'CounterC:',
                 ),
                 BlocConsumer<CounterBBloc, CounterBState>(
-                  listener: (context, state) {
-                    if (state.count == 6) {
-                      debugPrint("Hello from consumer");
+                    listener: (context, state) {
+                  if (state.count == 6) {
+                    debugPrint("Hello from consumer");
+                  }
+                }, builder: (context, state) {
+                  return Text(
+                    '${state.count}',
+                    style: Theme.of(context).textTheme.headline4,
+                  );
+                }),
+              ],
+            ),
+            const SizedBox(width: 20),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'CounterD:',
+                ),
+                BlocSelector<CounterBBloc, CounterBState, bool>(
+                  selector: (state) {
+                    if (state.count % 2 == 0) {
+                      return true;
+                    } else {
+                      return false;
                     }
                   },
                   builder: (context, state) {
-                      return Text(
-                        '${state.count}',
-                        style: Theme.of(context).textTheme.headline4,
-                      );
-
-                  }
+                    return BlocBuilder<CounterBBloc, CounterBState>(
+                      builder: (context, stateB) {
+                        return Text(
+                          state ? '${stateB.count}' : '0',
+                          style: Theme.of(context).textTheme.headline4,
+                        );
+                      },
+                    );
+                  },
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
