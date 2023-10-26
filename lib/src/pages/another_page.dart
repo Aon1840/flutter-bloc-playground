@@ -49,7 +49,7 @@ class _AnotherPageState extends State<AnotherPage> {
                 ),
                 BlocListener<CounterBBloc, CounterBState>(
                   listener: (context, state) {
-                    if (state.count == 4) {
+                    if (state.count == 10) {
                       debugPrint("Hello from listener");
                       Navigator.pop(context);
                     }
@@ -62,6 +62,29 @@ class _AnotherPageState extends State<AnotherPage> {
                       );
                     },
                   ),
+                ),
+              ],
+            ),
+            const SizedBox(width: 20),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Text(
+                  'CounterC:',
+                ),
+                BlocConsumer<CounterBBloc, CounterBState>(
+                  listener: (context, state) {
+                    if (state.count == 6) {
+                      debugPrint("Hello from consumer");
+                    }
+                  },
+                  builder: (context, state) {
+                      return Text(
+                        '${state.count}',
+                        style: Theme.of(context).textTheme.headline4,
+                      );
+
+                  }
                 ),
               ],
             )
