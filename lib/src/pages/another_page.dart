@@ -54,14 +54,6 @@ class _AnotherPageState extends State<AnotherPage> {
                       Navigator.pop(context);
                     }
                   },
-                  child: BlocBuilder<CounterBBloc, CounterBState>(
-                    builder: (context, stateB) {
-                      return Text(
-                        '${stateB.count}',
-                        style: Theme.of(context).textTheme.headline4,
-                      );
-                    },
-                  ),
                 ),
               ],
             ),

@@ -17,5 +17,4 @@ class CounterAState extends Equatable {
     return 'count: $count}';
   } // ถ้าอยากให้ค่ามันเปลี่ยนแล้ว ui เปลี่ยนด้วยต้องใส่ค่าในนี้
 
-
 }
